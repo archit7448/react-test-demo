@@ -2,8 +2,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { SignUp } from "./signUp";
 
 test("SignUp  component test", async () => {
-  const clickFunc = jest.fn();
-  const { getByLabelText } = render(<SignUp onSubmit={clickFunc} />);
+  const clickFunction = jest.fn();
+  const { getByLabelText } = render(<SignUp onSubmit={clickFunction} />);
 
   const nextButton = screen.getByText(/next/i);
 
@@ -17,9 +17,9 @@ test("SignUp  component test", async () => {
 
   fireEvent.click(nextButton);
 
-  expect(clickFunc).toBeCalledWith({ name: "realdev" });
+  expect(clickFunction).toBeCalledWith({ name: "realdev" });
 
-  expect(clickFunc).toBeCalledTimes(1);
+  expect(clickFunction).toBeCalledTimes(1);
 
   //
   expect(nextButton).toBeDisabled();
@@ -30,9 +30,9 @@ test("SignUp  component test", async () => {
 
   fireEvent.click(nextButton);
 
-  expect(clickFunc).toBeCalledWith({ email: "realdev123@gmail.com" });
+  expect(clickFunction).toBeCalledWith({ email: "realdev123@gmail.com" });
 
-  expect(clickFunc).toBeCalledTimes(2);
+  expect(clickFunction).toBeCalledTimes(2);
 
   //
 
@@ -46,9 +46,9 @@ test("SignUp  component test", async () => {
 
   fireEvent.click(submitButton);
 
-  expect(clickFunc).toBeCalledTimes(3);
+  expect(clickFunction).toBeCalledTimes(3);
 
-  expect(clickFunc).toBeCalledWith({
+  expect(clickFunction).toBeCalledWith({
     email: "realdev123@gmail.com",
     name: "realdev",
     password: "realdev",
